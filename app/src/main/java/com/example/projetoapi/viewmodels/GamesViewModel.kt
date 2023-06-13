@@ -52,8 +52,9 @@ class GamesViewModel: ViewModel() {
         _gamesDetailScreenUiState.update { currentState ->
             currentState.copy(
                 nomeJogo = game.name,
+                imgJogo = game.thumbnail,
                 descJogo = game.descricao,
-                idJogo = game.id,
+                urlJogo = game.url
             )
         }
         navigate(navController)

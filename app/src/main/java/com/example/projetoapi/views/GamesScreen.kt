@@ -42,6 +42,8 @@ import com.example.projetoapi.models.Game
 import com.example.projetoapi.viewmodels.GamesViewModel
 import com.example.projetoapi.viewmodels.GamesUiState
 import androidx.navigation.NavController
+import androidx.compose.foundation.Image
+import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun GamesScreen(
@@ -58,8 +60,19 @@ fun GamesScreen(
 
 @Composable
 fun LoadingScreen() {
-    Box(modifier = Modifier.fillMaxSize()){
-        Text(text = "CARREGANDO")
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        val context = LocalContext.current
+        Image(
+            painter = rememberAsyncImagePainter(
+                ImageRequest.Builder(context).data(data = R.drawable.carregando_gif).apply(block = {
+                }).build()
+            ),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+        )
     }
 }
 
@@ -97,7 +110,6 @@ fun ItemGame(
             .padding(bottom = 30.dp)
             .size(width = 10.dp, height = 240.dp)
     ) {
-
         Card(
             modifier = Modifier
                 .fillMaxSize()
@@ -155,7 +167,10 @@ fun ItemGame(
 
 @Composable
 fun ErrorScreen() {
-    Box(modifier = Modifier.fillMaxSize()){
-        Text(text = "DEU RUIM")
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        Text(text = "ERRO!")
     }
 }
